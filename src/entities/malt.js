@@ -1,4 +1,3 @@
-
 class Malt {
     constructor(name, ebc) {
         this.name = name;
@@ -9,3 +8,5 @@ class Malt {
         return new Malt(name, ebc);
     }
 }
+
+module.exports = Malt;

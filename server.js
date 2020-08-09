@@ -9,24 +9,35 @@ const {
 
 const { createApp, createServer } = require('yion');
 const databasePlugin = require('./src/plugin/database-plugin')(DB_URI, DB_NAME, DB_CACHE_ENABLED);
-const MaltController = require('./src/controllers/malt-controller');
 
 const app = createApp();
 const server = createServer(app, [databasePlugin]);
-
-const maltCtrl = new MaltController(app);
 
 app.get('/', (req, res) => {
     res.json({ message: 'Hello world!' });
 });
 
-app.get('/api/malts', (req, res) => {
-    maltCtrl.index(req, res);
+app.use((req, res, next) => {
+    /*if (req.headers.origin) {
+        const origin = req.headers.origin.match(/^(?:http|https):\/\/\w+\.beelab\.tk$/i);
+        res.set('Access-Control-Allow-Origin', origin !== null ? origin[0] : 'null');
+    } else {
+        res.set('Access-Control-Allow-Origin', 'null');
+    }*/
+
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization');
+    res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+
+    if (req.method === 'OPTIONS') {
+        return res.send();
+    }
+
+    next();
 });
 
-app.get('/api/malt/:id', (req, res) => {
-    maltCtrl.show(req, res);
-});
+// ROUTES
+require('./src/routes/malt-router')(app);
 
 server
     .listen(NODE_PORT)
