@@ -1,0 +1,25 @@
+{
+  "name": "beer-cookbook-api",
+  "version": "0.1.0",
+  "description": "Cookbook for beer API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlyne/beer-cookbook-api.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlyne/beer-cookbook-api/issues"
+  },
+  "homepage": "https://github.com/carlyne/beer-cookbook-api#readme",
+  "dependencies": {
+    "@beelab/toolbox": "^0.2.3",
+    "dotenv": "^8.2.0",
+    "yion": "^1.3.2"
+  }
+}
