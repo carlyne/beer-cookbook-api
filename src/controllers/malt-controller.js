@@ -3,7 +3,7 @@ const MaltRepository = require('../repositories/malt-repository');
 
 class MaltController extends ResourceController {
     constructor(app) {
-        super(new MaltRepository(app, 'malt'));
+        super(new MaltRepository(app));
     }
 }
 

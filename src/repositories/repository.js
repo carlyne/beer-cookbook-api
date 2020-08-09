@@ -29,6 +29,23 @@ class Repository {
         });
     }
 
+    persist(object) {
+        if (object._id) {
+            return this.database.query({
+                type: 'update',
+                collection: this.collection,
+                selector: { _id: object._id },
+                params: { $set: object }
+            });
+        }
+
+        return this.database.query({
+            type: 'insert',
+            collection: this.collection,
+            params: object
+        });
+    }
+
     get database() {
         return this.app.requester;
     }
