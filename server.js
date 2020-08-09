@@ -9,7 +9,7 @@ const {
 
 const { createApp, createServer } = require('yion');
 const databasePlugin = require('./src/plugin/database-plugin')(DB_URI, DB_NAME, DB_CACHE_ENABLED);
-const MaltController = require('./src/controllers/malt');
+const MaltController = require('./src/controllers/malt-controller');
 
 const app = createApp();
 const server = createServer(app, [databasePlugin]);

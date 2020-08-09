@@ -1,5 +1,5 @@
 const ResourceController = require('./resource-controller');
-const MaltRepository = require('./../repositories/malt');
+const MaltRepository = require('../repositories/malt-repository');
 
 class MaltController extends ResourceController {
     constructor(app) {
