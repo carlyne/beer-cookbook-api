@@ -1,0 +1,6 @@
+{
+  "name": {
+    "_type": "string",
+    "_required": true
+  }
+}

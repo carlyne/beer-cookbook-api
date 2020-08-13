@@ -9,18 +9,18 @@ class ResourceController {
 
     index(req, res) {
         this.repository.find()
-            .then(malts => res.json({ data: malts }))
+            .then(datas => res.json({ data: datas }))
             .catch(error => res.status(500).json({ error: String(error) }));
     }
 
     show(req, res) {
         this.repository.findOne({ _id: req.params.id })
-            .then(malt => {
-                if (!malt) {
+            .then(datas => {
+                if (!datas) {
                     return res.status(404).json({ error: 'Not found' });
                 }
 
-                res.json({ data: malt });
+                res.json({ data: datas });
             })
             .catch(error => res.status(500).json({ error: String(error) }));
     }

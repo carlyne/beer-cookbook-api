@@ -1,11 +1,12 @@
 class Malt {
-    constructor(name, ebc) {
+    constructor(name, ebc, origin) {
         this.name = name;
         this.ebc = ebc;
+        this.origin = origin;
     }
 
-    static createNew({ name, ebc }) {
-        return new Malt(name, ebc);
+    static createNew({ name, ebc, origin }) {
+        return new Malt(name, ebc, origin);
     }
 }
 

@@ -4,8 +4,8 @@
     "_required": true
   },
 
-  "ebc": {
-    "_type": "number",
+  "category_id": {
+    "_type": "string",
     "_required": true
   },
 
