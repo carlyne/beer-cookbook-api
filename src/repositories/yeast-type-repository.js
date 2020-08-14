@@ -1,9 +1,9 @@
 const Repository = require('./repository');
-const YeastType = require('./../entities/yeastType');
+const YeastType = require('../entities/yeast-type');
 
 class YeastTypeRepository extends Repository {
     constructor(app) {
-        super(app, 'yeastType');
+        super(app, 'yeast-type');
     }
 
     find(params = {}) {

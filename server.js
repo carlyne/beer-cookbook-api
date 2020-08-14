@@ -37,7 +37,12 @@ app.use((req, res, next) => {
 });
 
 // ROUTES
+require('./src/routes/beer-type-router')(app);
+require('./src/routes/hop-category-router')(app);
+require('./src/routes/hop-router')(app);
 require('./src/routes/malt-router')(app);
+require('./src/routes/yeast-router')(app);
+require('./src/routes/yeast-type-router')(app);
 
 server
     .listen(NODE_PORT)

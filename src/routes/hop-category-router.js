@@ -1,4 +1,4 @@
-const HopCategoryController = require('./../controllers/hopCategory-controller');
+const HopCategoryController = require('../controllers/hop-category-controller');
 
 module.exports = (app) => {
     const hopCategoryController = new HopCategoryController(app);

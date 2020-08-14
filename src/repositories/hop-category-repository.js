@@ -1,9 +1,9 @@
 const Repository = require('./repository');
-const HopCategory = require('./../entities/hopCategory');
+const HopCategory = require('../entities/hop-category');
 
 class HopCategoryRepository extends Repository {
     constructor(app) {
-        super(app, 'hopCategory');
+        super(app, 'hop-category');
     }
 
     find(params = {}) {

@@ -2,23 +2,20 @@
 
 require('dotenv').config();
 const { Query } = require('@beelab/toolbox');
-const Validator = require('@beelab/json-validator');
 const Prompt = require('./../src/services/prompt');
-const BeerType = require('./../src/entities/beerType');
-const BeerTypeRepository = require('./../src/repositories/beerType-repository');
+const BeerType = require('../src/entities/beer-type');
+const BeerTypeRepository = require('../src/repositories/beer-type-repository');
 const beerTypeDataInfo = require('./../config/validations/beer-type.json');
+const validator = require('./../src/services/validator');
 
 const {
     DB_URI,
     DB_NAME
 } = process.env;
 
-const validator = new Validator();
 const requester = new Query(DB_URI, DB_NAME);
 const repository = new BeerTypeRepository({ requester });
 const prompt = new Prompt();
-
-validator.addSchema('beerType_schema', beerTypeDataInfo);
 
 const questions = [];
 for (let key in beerTypeDataInfo) {
@@ -28,7 +25,7 @@ for (let key in beerTypeDataInfo) {
 
 prompt.askQuestions(questions).then(info => {
     try {
-        validator.validate(info, 'beerType_schema');
+        validator.validate(info, beerTypeDataInfo);
         repository.persist(BeerType.createNew(info)).then(() => process.exit(0));
     } catch (e) {
         console.error(String(e));

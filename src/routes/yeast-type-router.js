@@ -1,4 +1,4 @@
-const YeastTypeController = require('./../controllers/yeastType-controller');
+const YeastTypeController = require('../controllers/yeast-type-controller');
 
 module.exports = (app) => {
     const yeastTypeController = new YeastTypeController(app);

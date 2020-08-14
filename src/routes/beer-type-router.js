@@ -1,4 +1,4 @@
-const BeerTypeController = require('./../controllers/beerType-controller');
+const BeerTypeController = require('../controllers/beer-type-controller');
 
 module.exports = (app) => {
     const beerTypeController = new BeerTypeController(app);

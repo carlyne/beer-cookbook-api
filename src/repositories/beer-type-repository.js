@@ -1,9 +1,9 @@
 const Repository = require('./repository');
-const BeerType = require('./../entities/beerType');
+const BeerType = require('../entities/beer-type');
 
 class BeerTypeRepository extends Repository {
     constructor(app) {
-        super(app, 'beerType');
+        super(app, 'beer-type');
     }
 
     find(params = {}) {

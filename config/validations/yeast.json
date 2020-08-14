@@ -5,7 +5,7 @@
   },
 
   "type_id": {
-    "_type": "string",
+    "_type": "objectId",
     "_required": true
   },
 

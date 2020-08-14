@@ -1,5 +1,5 @@
 const ResourceController = require('./resource-controller');
-const BeerTypeRepository = require('../repositories/beerType-repository');
+const BeerTypeRepository = require('../repositories/beer-type-repository');
 
 class BeerTypeController extends ResourceController {
     constructor(app) {
