@@ -9,7 +9,7 @@
     "_required": true
   },
 
-  "origin_code": {
+  "originCode": {
     "_type": "string",
     "_required": true
   }

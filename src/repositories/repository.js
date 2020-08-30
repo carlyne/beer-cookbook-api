@@ -30,11 +30,11 @@ class Repository {
     }
 
     persist(object) {
-        if (object._id) {
+        if (object.id) {
             return this.database.query({
                 type: 'update',
                 collection: this.collection,
-                selector: { _id: object._id },
+                selector: { _id: object.id },
                 params: { $set: object }
             });
         }
@@ -43,6 +43,14 @@ class Repository {
             type: 'insert',
             collection: this.collection,
             params: object
+        });
+    }
+
+    delete(object) {
+        return this.database.query({
+            type: 'remove',
+            collection: this.collection,
+            selector: { _id: object.id }
         });
     }
 

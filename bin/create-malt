@@ -27,7 +27,7 @@ for (let key in maltDataInfo) {
 }
 
 prompt.askQuestions(questions).then(info => {
-    try {
+    try {  
         validator.validate(info, 'malt_schema');
         repository.persist(Malt.createNew(info)).then(() => process.exit(0));
     } catch (e) {

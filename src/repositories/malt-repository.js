@@ -29,6 +29,14 @@ class MaltRepository extends Repository {
 
         return super.persist(malt);
     }
+
+    delete(malt) {
+        if (!(malt instanceof Malt)) {
+            throw new Error('Instance of Malt needed');
+        }
+
+        return super.delete(malt);
+    }
 }
 
 module.exports = MaltRepository;
