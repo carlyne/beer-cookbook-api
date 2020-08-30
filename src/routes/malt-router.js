@@ -7,4 +7,5 @@ module.exports = (app) => {
     app.get('/api/malts/:id', (req, res) => maltController.show(req, res));
     app.post('/api/malts', (req, res) => maltController.create(req, res));
     app.delete('/api/malts/:id', (req, res) => maltController.delete(req, res));
+    app.post('/api/malts/:id', (req, res) => maltController.update(req, res));
 };

@@ -1,16 +1,42 @@
 {
-  "name": {
-    "_type": "string",
-    "_required": true
+  "create" : {
+
+    "name": {
+      "_type": "string",
+      "_required": true
+    },
+  
+    "ebc": {
+      "_type": "number",
+      "_required": true,
+      "_parseInt": true
+    },
+  
+    "originCode": {
+      "_type": "string",
+      "_required": true
+    }
+
   },
 
-  "ebc": {
-    "_type": "number",
-    "_required": true
-  },
 
-  "originCode": {
-    "_type": "string",
-    "_required": true
+  "edit" : {
+
+    "name": {
+      "_type": "string",
+      "_optional": true
+    },
+  
+    "ebc": {
+      "_type": "number",
+      "_optional": true,
+      "_parseInt": true
+    },
+  
+    "originCode": {
+      "_type": "string",
+      "_optional": true
+    }
+
   }
 }

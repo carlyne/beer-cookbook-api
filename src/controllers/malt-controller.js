@@ -11,17 +11,9 @@ class MaltController extends ResourceController {
     }
 
     create(req, res) {
-        const infos = {
-            name: req.body.name,
-            ebc: parseInt(req.body.ebc, 10),
-            originCode: req.body.code
-        }
-    
-        validator.addSchema('malt_schema', maltDataInfo);
-
         let validateData;
         try {
-            validateData = validator.validate(infos, 'malt_schema');
+            validateData = validator.validate(req.body, maltDataInfo.create);
 
         } catch (err) {
             return res.status(400).json({ message: err.message });
@@ -29,6 +21,27 @@ class MaltController extends ResourceController {
 
         this.repository.persist(Malt.createNew(validateData)).then((data) => {
             res.status(201).json(data.result.ops[0]);
+        });
+    }
+
+    update(req, res) {
+        this.repository.findOne({_id: req.params.id}).then(object => {
+
+            if(object) {
+                let validateData;
+                try {
+                    validateData = validator.validate(req.body, maltDataInfo.edit);
+                } catch (err) {
+                    return res.status(400).json({ message: err.message });
+                }
+
+                const malt = Object.assign(object, validateData);
+                return this.repository.persist(malt).then(() => {
+                    res.json(malt);
+                });
+            }
+
+           res.status(404).send();
         });
     }
 }
