@@ -29,6 +29,14 @@ class YeastRepository extends Repository {
 
         return super.persist(yeast);
     }
+
+    delete(yeast) {
+        if (!(yeast instanceof Yeast)) {
+            throw new Error('Instance of Yeast needed');
+        }
+
+        return super.delete(yeast);
+    }
 }
 
 module.exports = YeastRepository;

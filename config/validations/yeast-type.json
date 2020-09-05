@@ -1,6 +1,20 @@
 {
-  "name": {
-    "_type": "string",
-    "_required": true
+  "create": {
+
+    "name": {
+      "_type": "string",
+      "_required": true
+    }
+
+  },
+
+
+  "edit": {
+
+    "name": {
+      "_type": "string",
+      "_optional": true
+    }
+    
   }
 }

@@ -1,16 +1,40 @@
 {
-  "name": {
-    "_type": "string",
-    "_required": true
+  "create" : {
+
+    "name": {
+      "_type": "string",
+      "_required": true
+    },
+  
+    "type_id": {
+      "_type": "objectId",
+      "_required": true
+    },
+  
+    "origin_code": {
+      "_type": "string",
+      "_required": true
+    }
+
   },
 
-  "type_id": {
-    "_type": "objectId",
-    "_required": true
-  },
 
-  "origin_code": {
-    "_type": "string",
-    "_required": true
+  "edit" : {
+
+    "name": {
+      "_type": "string",
+      "_optional": true
+    },
+  
+    "type_id": {
+      "_type": "objectId",
+      "_optional": true
+    },
+  
+    "origin_code": {
+      "_type": "string",
+      "_optional": true
+    }
+
   }
 }

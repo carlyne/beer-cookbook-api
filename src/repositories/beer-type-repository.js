@@ -29,6 +29,14 @@ class BeerTypeRepository extends Repository {
 
         return super.persist(beerType);
     }
+
+    delete(beer) {
+        if (!(beer instanceof Beer)) {
+            throw new Error('Instance of Beer needed');
+        }
+
+        return super.delete(beer);
+    }
 }
 
 module.exports = BeerTypeRepository;

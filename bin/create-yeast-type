@@ -2,20 +2,23 @@
 
 require('dotenv').config();
 const { Query } = require('@beelab/toolbox');
+const Validator = require('@beelab/json-validator');
 const Prompt = require('./../src/services/prompt');
-const YeastType = require('../src/entities/yeast-type');
-const YeastTypeRepository = require('../src/repositories/yeast-type-repository');
+const YeastType = require('./../src/entities/yeast-type');
+const YeastTypeRepository = require('./../src/repositories/yeast-type-repository');
 const yeastTypeDataInfo = require('./../config/validations/yeast-type.json');
-const validator = require('./../src/services/validator');
 
 const {
     DB_URI,
     DB_NAME
 } = process.env;
 
+const validator = new Validator();
 const requester = new Query(DB_URI, DB_NAME);
 const repository = new YeastTypeRepository({ requester });
 const prompt = new Prompt();
+
+validator.addSchema('yeast_type_schema', yeastTypeDataInfo);
 
 const questions = [];
 for (let key in yeastTypeDataInfo) {
@@ -24,8 +27,8 @@ for (let key in yeastTypeDataInfo) {
 }
 
 prompt.askQuestions(questions).then(info => {
-    try {
-        validator.validate(info, yeastTypeDataInfo);
+    try {  
+        validator.validate(info, 'yeast_type_schema');
         repository.persist(YeastType.createNew(info)).then(() => process.exit(0));
     } catch (e) {
         console.error(String(e));

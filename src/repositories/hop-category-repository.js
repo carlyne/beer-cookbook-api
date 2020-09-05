@@ -29,6 +29,14 @@ class HopCategoryRepository extends Repository {
 
         return super.persist(hopCategory);
     }
+
+    delete(hopCategory) {
+        if (!(hopCategory instanceof HopCategory)) {
+            throw new Error('Instance of HopCategory needed');
+        }
+
+        return super.delete(hopCategory);
+    }
 }
 
 module.exports = HopCategoryRepository;

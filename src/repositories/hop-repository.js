@@ -29,6 +29,14 @@ class HopRepository extends Repository {
 
         return super.persist(hop);
     }
+
+    delete(hop) {
+        if (!(hop instanceof Hop)) {
+            throw new Error('Instance of Hop needed');
+        }
+
+        return super.delete(hop);
+    }
 }
 
 module.exports = HopRepository;

@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+
+require('dotenv').config();
+const { Query } = require('@beelab/toolbox');
+const Validator = require('@beelab/json-validator');
+const Prompt = require('./../src/services/prompt');
+const Hop = require('./../src/entities/hop');
+const HopRepository = require('./../src/repositories/hop-repository');
+const hopDataInfo = require('./../config/validations/hop.json');
+
+const {
+    DB_URI,
+    DB_NAME
+} = process.env;
+
+const validator = new Validator();
+const requester = new Query(DB_URI, DB_NAME);
+const repository = new HopRepository({ requester });
+const prompt = new Prompt();
+
+validator.addSchema('hop_schema', hopDataInfo);
+
+const questions = [];
+for (let key in hopDataInfo) {
+    const type = hopDataInfo[key]._type;
+    questions.push({ key, type, question: `Hop ${key} ? (${type}) `});
+}
+
+prompt.askQuestions(questions).then(info => {
+    try {  
+        validator.validate(info, 'hop_schema');
+        repository.persist(Hop.createNew(info)).then(() => process.exit(0));
+    } catch (e) {
+        console.error(String(e));
+        process.exit(1);
+    }
+});

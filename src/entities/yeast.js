@@ -1,12 +1,13 @@
 class Yeast {
-    constructor(name, type, origin) {
+    constructor(id, name, type, origin) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.origin = origin;
     }
 
-    static createNew({ name, type, origin }) {
-        return new Yeast(name, type, origin);
+    static createNew({ _id, name, type, origin }) {
+        return new Yeast(_id, name, type, origin);
     }
 }
 
